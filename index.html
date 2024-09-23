@@ -5,242 +5,139 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>𝗔𝗘-𝗚𝗣𝗧 🔵🔴⚪</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #fef3f3;
+    
     }
-
     .container {
-      max-width: 800px;
+      max-width: 600px;
       width: 100%;
       background: #ffffff;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
-      height: 90vh;
-      margin: 20px auto;
+      height: 80vh;
     }
-
     .title {
-      font-size: 2.5em;
+      font-size: 3em;
       font-weight: bold;
       text-align: center;
-      color: #ff6f61;
+      color: #ffffff;
       margin: 0;
-      padding: 10px;
-      border-bottom: 2px solid #ff6f61;
+      -webkit-background-clip: text;
     }
-
+    @keyframes gradientShift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
     .chat-box {
       flex: 1;
       overflow-y: auto;
-      padding: 15px;
-      border-radius: 10px;
-      background: #fff0f6;
-      border: 2px solid #ff6f61;
-      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      background: #313131;
+      margin-bottom: 10px;
     }
-
     .message {
       padding: 10px;
       border-radius: 10px;
       margin: 5px 0;
       cursor: pointer;
       word-wrap: break-word;
-      transition: background-color 0.3s, transform 0.3s;
-      position: relative;
+      transition: background-color 0.3s;
     }
-
     .message:hover {
-      background-color: #ffebf2;
-      transform: scale(1.02);
+      background-color: #f1f1f1;
     }
-
     .user-message {
-      background-color: #ff6f61;
+      background-color:#ff80b3;
       color: #fff;
       text-align: right;
-      border: 1px solid #ff6f61;
     }
-
     .bot-message {
-      background-color: #f1f0f0;
+      background-color: #fff180;
       color: #333;
-      border: 1px solid #ddd;
     }
-
-    .copy-button {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      background-color: #ff6f61;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-      font-size: 14px;
-      display: none;
-    }
-
-    .message:hover .copy-button {
-      display: inline-block;
-    }
-
-    .user-input-container {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
-    }
-
     .user-input {
       width: calc(100% - 90px);
       padding: 10px;
-      border: 2px solid #ff6f61;
-      border-radius: 15px;
+      border: 0px solid #007bff;
+      border-radius: 5px;
       font-size: 16px;
-      color: #333;
+      color: #007bff;
       box-sizing: border-box;
-      margin-right: 10px;
     }
-
-    .send-button, .reset-button, .model-select {
+    .send-button {
+      width: 80px;
       padding: 10px;
       border: none;
-      border-radius: 15px;
-      background-color: #ff6f61;
+      border-radius: 5px;
+      background-color: #007bff;
       color: #fff;
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s, transform 0.3s;
     }
-
-    .send-button:hover, .reset-button:hover, .model-select:hover {
-      background-color: #ff9b9b;
+    .send-button:hover {
+      background-color:#afff40;
+      color: #000000;
       transform: scale(1.05);
     }
-
-    .send-button:disabled, .reset-button:disabled, .model-select:disabled {
-      background-color: #ddd;
+    .send-button:disabled {
+      background-color: #999;
       cursor: not-allowed;
     }
-
-    .model-select {
-      background-color: #ff6f61;
-      color: #fff;
-      width: 100px;
-      margin-left: 10px;
-    }
-
-    .options {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .options label {
-      margin-right: 10px;
-    }
-
-    .options select {
-      padding: 5px;
-      border-radius: 5px;
+    .bb {
+      background-color:#313131;
     }
   </style>
 </head>
-<body>
+<body class="bb">
   <div class="container">
-    <h1 class="title">𝗔𝗘𝗦𝗧𝗛𝗘𝗥 💬</h1>
-    
-    <div class="options">
-      <label for="model-select">Model:</label>
-      <select id="model-select" class="model-select">
-        <option value="default">Default</option>
-        <option value="model1">Model 1</option>
-        <option value="model2">Model 2</option>
-      </select>
-      <button class="reset-button" id="reset-button">Reset Chat</button>
-    </div>
-    
+    <h1 class="title">𝗔𝗘𝗦𝗧𝗛𝗘𝗥</h1>
     <div class="chat-box" id="chat-box"> 
-      <div class="message bot-message">
-        How may I assist you today?
-        <button class="copy-button" onclick="copyToClipboard(this)">📋</button>
-      </div>
+      <div class="message bot-message">How may I assist you today? ☕</div>
     </div>
-    
-    <div class="user-input-container">
-      <input type="text" id="user-input" class="user-input" placeholder="Type your message...">
-      <button class="send-button" id="send-button">Send</button>
-    </div>
+    <input type="text" id="user-input" class="user-input" placeholder="Type your message...">
+    <button class="send-button" id="send-button">𝗦𝗘𝗡𝗗</button>
   </div>
 
   <script>
     document.getElementById('send-button').addEventListener('click', async function () {
-      await sendMessage();
-    });
-
-    document.getElementById('user-input').addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        sendMessage();
-      }
-    });
-
-    document.getElementById('reset-button').addEventListener('click', function () {
-      document.getElementById('chat-box').innerHTML = '<div class="message bot-message">How may I assist you today?<button class="copy-button" onclick="copyToClipboard(this)">📋</button></div>';
-    });
-
-    async function sendMessage() {
       const userInput = document.getElementById('user-input').value;
-      const model = document.getElementById('model-select').value;
       if (userInput.trim() === '') return;
-
+      
       appendMessage('user-message', userInput);
-
+      
       const typingIndicator = document.createElement('div');
       typingIndicator.textContent = '....';
       typingIndicator.style.fontStyle = 'italic';
       typingIndicator.style.color = '#888';
       typingIndicator.className = 'message bot-message';
       document.getElementById('chat-box').appendChild(typingIndicator);
-
-      const response = await fetch(`/api/hercai?question=${encodeURIComponent(userInput)}&model=${model}`);
+      
+      const response = await fetch(`/api/hercai?question=${encodeURIComponent(userInput)}`);
       const responseData = await response.json();
 
       typingIndicator.remove();
       appendMessage('bot-message', responseData.reply);
-
+      
       document.getElementById('user-input').value = '';
-    }
+    });
 
     function appendMessage(className, message) {
       const chatBox = document.getElementById('chat-box');
       const messageDiv = document.createElement('div');
       messageDiv.className = `message ${className}`;
-
-      // Replace <br> tags with new lines
-      messageDiv.textContent = message.replace(/<br\s*\/?>/gi, '\n');
-
-      const copyButton = document.createElement('button');
-      copyButton.textContent = '📋';
-      copyButton.className = 'copy-button';
-      copyButton.onclick = () => copyToClipboard(copyButton);
-
-      messageDiv.appendChild(copyButton);
+      messageDiv.textContent = message;
+      messageDiv.onclick = () => {
+        navigator.clipboard.writeText(message).then(() => {
+          alert('Message copied to clipboard!');
+        });
+      };
       chatBox.appendChild(messageDiv);
       chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function copyToClipboard(button) {
-      const message = button.previousSibling.textContent;
-      navigator.clipboard.writeText(message).then(() => {
-        alert('Message copied to clipboard!');
-      });
     }
   </script>
 </body>
