@@ -51,12 +51,12 @@
       background-color: #f1f1f1;
     }
     .user-message {
-      background-color:#ff80b3;
-      color: #fff;
+      background-color:#aaffb5;
+      color: #000000;
       text-align: right;
     }
     .bot-message {
-      background-color: #fff180;
+      background-color: #e8e8e8;
       color: #333;
     }
     .user-input {
@@ -73,14 +73,14 @@
       padding: 10px;
       border: none;
       border-radius: 5px;
-      background-color: #007bff;
+      background-color: #818181;
       color: #fff;
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s, transform 0.3s;
     }
     .send-button:hover {
-      background-color:#afff40;
+      background-color:#afff6a;
       color: #000000;
       transform: scale(1.05);
     }
@@ -97,10 +97,10 @@
   <div class="container">
     <h1 class="title">𝗔𝗘𝗦𝗧𝗛𝗘𝗥</h1>
     <div class="chat-box" id="chat-box"> 
-      <div class="message bot-message">How may I assist you today? ☕</div>
+      <div class="message bot-message">𝗛𝖾𝗅𝗅𝗈! 𝗛𝗈𝗐 𝖼𝖺𝗇 𝗜 𝖺𝗌𝗌𝗂𝗌𝗍 𝗒𝗈𝗎 𝗍𝗈𝖽𝖺𝗒? 😊🌟☕</div>
     </div>
-    <input type="text" id="user-input" class="user-input" placeholder="Type your message...">
-    <button class="send-button" id="send-button">𝗦𝗘𝗡𝗗</button>
+    <input type="text" id="user-input" class="user-input" placeholder="ฅ^•ﻌ•^ฅ.....𝗧𝗒𝗉𝖾 𝗛𝖾𝗋𝖾">
+    <button class="send-button" id="send-button">⌨︎</button>
   </div>
 
   <script>
@@ -111,8 +111,7 @@
       appendMessage('user-message', userInput);
       
       const typingIndicator = document.createElement('div');
-      typingIndicator.textContent = '....';
-      typingIndicator.style.fontStyle = 'italic';
+      typingIndicator.textContent = '| (• ◡•)|.......';
       typingIndicator.style.color = '#888';
       typingIndicator.className = 'message bot-message';
       document.getElementById('chat-box').appendChild(typingIndicator);
@@ -133,7 +132,7 @@
       messageDiv.textContent = message;
       messageDiv.onclick = () => {
         navigator.clipboard.writeText(message).then(() => {
-          alert('Message copied to clipboard!');
+          alert('Message copied to clipboard! ');
         });
       };
       chatBox.appendChild(messageDiv);
