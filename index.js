@@ -45,6 +45,7 @@ app.get('/api/hercai', async (req, res) => {
     console.log(`Request Number: ${requestNumber}`);
 
     const userQuestion = req.query.question;
+    const RolePlay ="quand tu répond à cette question ajoutes des emojis convenable\n\n";
 
     // Log the user's question
     console.log(`User's Question: ${userQuestion}`);
@@ -61,7 +62,7 @@ app.get('/api/hercai', async (req, res) => {
       res.json({ reply: closestMatch.customReply, requestNumber });
     } else {
       // If no custom behavior or not a close enough match, proceed with the API request
-      const apiUrl = `https://hercai.onrender.com/v3/hercai?question=${encodeURIComponent(userQuestion)}`;
+      const apiUrl = `https://hercai.onrender.com/v3/hercai?question=${encodeURIComponent(RolePlay + userQuestion)}`;
       const response = await axios.get(apiUrl);
 
       // Assuming the API response structure is as described
