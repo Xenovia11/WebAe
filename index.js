@@ -30,7 +30,6 @@ const behavior = [
     question: 'What is your name?',
     customReply: 'My name is Goddess-Aesther!',
   },
-  // Add more custom behaviors as needed
 ];
 
 // Function to find the closest match in behavior array
@@ -42,7 +41,6 @@ function findClosestMatch(userQuestion) {
     const index = bestMatch.targetIndex;
     return behavior[index];
   }
-
   return null;
 }
 
@@ -74,9 +72,13 @@ app.get('/api/hercai', async (req, res) => {
       const response = await axios.get(apiUrl);
       const responseData = response.data;
 
-      console.log('API Response Used');
-      const formattedReply = applyFont(responseData.result);
-      res.json({ result: formattedReply, requestNumber });
+      if (responseData.status === 200) {
+        console.log('API Response Used');
+        const formattedReply = applyFont(responseData.result);
+        res.json({ result: formattedReply, requestNumber });
+      } else {
+        res.status(500).json({ error: 'API returned an error', requestNumber });
+      }
     }
   } catch (error) {
     console.error('Error fetching data:', error.message);
