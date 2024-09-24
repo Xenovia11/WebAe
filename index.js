@@ -68,15 +68,15 @@ app.get('/api/hercai', async (req, res) => {
     if (closestMatch) {
       console.log('Custom Behavior Used');
       const formattedReply = applyFont(closestMatch.customReply);
-      res.json({ reply: formattedReply, requestNumber });
+      res.json({ result: formattedReply, requestNumber });
     } else {
-      const apiUrl = `https://hercai.onrender.com/v3/hercai?question=${encodeURIComponent(RolePlay + userQuestion)}`;
+      const apiUrl = `https://api.chiwa.id/api/ai/blackbox?prompt=${encodeURIComponent(RolePlay + userQuestion)}`;
       const response = await axios.get(apiUrl);
       const responseData = response.data;
 
       console.log('API Response Used');
-      const formattedReply = applyFont(responseData.reply);
-      res.json({ reply: formattedReply, requestNumber });
+      const formattedReply = applyFont(responseData.result);
+      res.json({ result: formattedReply, requestNumber });
     }
   } catch (error) {
     console.error('Error fetching data:', error.message);
